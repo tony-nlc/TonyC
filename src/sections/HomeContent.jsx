@@ -4,20 +4,36 @@ function HomeContent() {
     const [hasWaved, setHasWaved] = useState(false);
 
     return (
-        <div className="text-gray-400 mt-16 flex flex-col transition-opacity duration-1000 opacity-100">
-            <div className="flex flex-col items-center mt-16">
-                <h1 className="text-5xl font-bold text-gray-200 flex justify-center">
-                    Hello, I&apos;m Tony
+        <div className="relative flex flex-col items-center justify-center min-h-[60vh] px-6 text-center mt-16">
+            {/* Background Glow Effect */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-600/20 blur-[120px] rounded-full -z-10" />
+
+            <div className="space-y-4">
+                <h1 className="text-6xl md:text-7xl font-black tracking-tight text-white">
+                    Hello, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Tony</span>
                     <span
-                        className={`${!hasWaved ? "swing-once" : ""}`}
+                        className={`inline-block ml-4 cursor-default ${!hasWaved ? "animate-bounce" : "hover:animate-spin"}`}
                         onAnimationEnd={() => setHasWaved(true)}
                     >
                         👋
                     </span>
                 </h1>
-                <h2 className="text-lg font-semibold text-gray-300">
-                    Computer Science Student At British Columbia Institute of Technology
-                </h2>
+
+                <div className="max-w-2xl mx-auto">
+                    <h2 className="text-xl md:text-2xl font-medium text-gray-400 leading-relaxed">
+                        Computer Science Student at <br className="hidden md:block" />
+                        <span className="text-gray-200 border-b-2 border-blue-500/30">
+                            British Columbia Institute of Technology
+                        </span>
+                    </h2>
+                </div>
+            </div>
+
+            {/* Modern CTA or Badge */}
+            <div className="mt-10 flex gap-4">
+                <div className="px-4 py-2 rounded-full bg-gray-800/50 border border-gray-700 text-sm text-gray-300 backdrop-blur-sm">
+                    🚀 Currently building with React & Node.js
+                </div>
             </div>
         </div>
     );

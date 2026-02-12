@@ -1,30 +1,41 @@
 import React from "react";
-import { Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Skill = ({ svgUrl, label, isGoodAt }) => {
     return (
-        <div className="flex flex-col items-center pt-4 pl-4">
-            <div className="relative">
+        <motion.div 
+            whileHover={{ y: -5 }}
+            className="group relative flex flex-col items-center p-4 transition-all duration-300 ease-out"
+        >
+            {/* Ambient Background Glow */}
+            <div className="absolute inset-0 bg-blue-500/5 rounded-3xl opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500" />
+            
+            <div className="relative z-10">
+                {/* Minimalist Expertise Indicator */}
                 {isGoodAt && (
-                    <div className="absolute -top-2 -left-2">
-                        <Star
-                            size={24}
-                            className="text-yellow-400 fill-yellow-400"
-                        />
+                    <div className="absolute -top-1 -right-1 z-20">
+                        <span className="relative flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></span>
+                        </span>
                     </div>
                 )}
-                <div className="w-20 h-20 rounded-md bg-white overflow-hidden flex items-center justify-center"> {/* Added flex centering */}
+
+                {/* Icon Container */}
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-[#111] border border-gray-800 flex items-center justify-center shadow-xl group-hover:border-blue-500/50 group-hover:shadow-blue-500/10 transition-all duration-500">
                     <img
                         src={svgUrl}
                         alt={`${label} icon`}
-                        className="w-12 h-12 object-contain" // Changed to object-contain and removed unnecessary classes
+                        className="w-8 h-8 md:w-10 md:h-10 grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110"
                     />
                 </div>
             </div>
-            <span className="text-sm mt-2 font-semibold">
+
+            {/* Label */}
+            <span className="text-xs md:text-sm mt-4 font-bold text-gray-500 group-hover:text-white transition-colors tracking-tight">
                 {label}
             </span>
-        </div>
+        </motion.div>
     );
 };
 

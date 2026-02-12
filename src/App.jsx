@@ -1,36 +1,38 @@
-import { useState, useEffect } from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Greeting from "./components/Greeting";
-import HomeContent from "./sections/HomeContent";
-import About from "./sections/About";
-import SkillsSection from "./sections/SkillsSection";
-import Portfolio from "./sections/Portfolio";
-import Contact from "./sections/Contact";
-import './index.css'; // Import your CSS file
+    import { useState, useEffect } from "react";
+    import { motion, AnimatePresence } from "framer-motion";
+    import Header from "./components/Header";
+    import Footer from "./components/Footer";
+    import Greeting from "./components/Greeting";
+    import HomeContent from "./sections/HomeContent";
+    import About from "./sections/About";
+    import SkillsSection from "./sections/SkillsSection";
+    import Portfolio from "./sections/Portfolio";
+    import Contact from "./sections/Contact";
+    import './index.css';
 
-function App() {
-    const [activeTab, setActiveTab] = useState("home");
-    const [showGreeting, setShowGreeting] = useState(true);
-    const [greetingText, setGreetingText] = useState("");
-    const [isFadingOut, setIsFadingOut] = useState(false);
-    const [fadeClass, setFadeClass] = useState(""); // For managing fade classes
-    const fullGreeting = "  Welcome";
+    function App() {
+        const [activeTab, setActiveTab] = useState("home");
+        const [showGreeting, setShowGreeting] = useState(true);
+        const [greetingText, setGreetingText] = useState("");
+        const fullGreeting = "Welcome";
 
-    useEffect(() => {
-        let index = 0;
-        const typingInterval = setInterval(() => {
-            if (index < fullGreeting.length - 1) {
-                setGreetingText((prev) => prev + fullGreeting[index]);
-                index++;
+        // 1. Cleaner Typing Logic
+        useEffect(() => {
+            if (greetingText.length < fullGreeting.length) {
+                const timeout = setTimeout(() => {
+                    setGreetingText(fullGreeting.slice(0, greetingText.length + 1));
+                }, 100);
+                return () => clearTimeout(timeout);
             } else {
-                clearInterval(typingInterval);
-                setIsFadingOut(true);
-                setTimeout(() => setShowGreeting(false), 1000);
+                // Wait 1s after typing finishes, then enter the site
+                const exitTimeout = setTimeout(() => setShowGreeting(false), 1000);
+                return () => clearTimeout(exitTimeout);
             }
-        }, 100);
-        return () => clearInterval(typingInterval);
-    }, []);
+        }, [greetingText]);
+
+        useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "instant" });
+    }, [activeTab]);
 
     const sections = {
         home: <HomeContent />,
@@ -40,32 +42,54 @@ function App() {
         contact: <Contact />
     };
 
-    const handleTabClick = (tab) => {
-        // Start the fade-out animation
-        setFadeClass("fade-out");
+        return (
+        <div className="bg-[#0a0a0a] min-h-screen flex flex-col text-gray-300 font-sans selection:bg-blue-500/30">
+            
+            {/* Header stays sticky/fixed */}
+            <header className="sticky top-0 z-50">
+                <Header activeTab={activeTab} handleTabClick={setActiveTab} />
+            </header>
 
-        // Wait for fade-out to complete before changing the tab
-        setTimeout(() => {
-            setActiveTab(tab);
-            setFadeClass("fade-in");
-        }, 500); // Match this duration with your fade-out animation duration
-    };
+            <main className="flex-grow flex flex-col relative">
+                <AnimatePresence mode="wait">
+                    {showGreeting ? (
+                        <motion.div
+                            key="greeting"
+                            initial={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 flex items-center justify-center z-[60] bg-[#0a0a0a]"
+                        >
+                            <Greeting greetingText={greetingText} />
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            key="site-wrapper"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1 }}
+                            className="flex flex-col min-h-screen w-full"
+                        >
+                            {/* 2. POPLAYOUT: This keeps the footer from snapping up while the old section exits */}
+                            <AnimatePresence mode="popLayout">
+                                <motion.div
+                                    key={activeTab}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.4 }}
+                                    className="flex-grow w-full max-w-6xl mx-auto px-6 py-12"
+                                >
+                                    {sections[activeTab]}
+                                </motion.div>
+                            </AnimatePresence>
 
-    return (
-        <div className="bg-gray-950 min-h-screen flex flex-col text-gray-300 font-sans select-none overflow-hidden">
-            <Header activeTab={activeTab} handleTabClick={handleTabClick} />
-            <main className="flex-grow flex flex-col items-center justify-center">
-                {showGreeting ? (
-                    <Greeting greetingText={greetingText} isFadingOut={isFadingOut} />
-                ) : (
-                    <div className={`w-full max-w-6xl mx-auto px-4 py-8 flex-grow ${fadeClass}`}>
-                        {sections[activeTab]}
-                    </div>
-                )}
+                            <Footer />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </main>
-            <Footer className="mt-auto" />
         </div>
     );
-}
+    }
 
-export default App;
+    export default App;

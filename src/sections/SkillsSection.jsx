@@ -1,73 +1,40 @@
 import React from "react";
 import Skill from "./Skill";
+import { motion } from "framer-motion";
 
 const skills = [
+    // --- Programming Languages ---
+    { 
+        label: "Go", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
+        isGoodAt: true,
+        category: "Programming Languages" 
+    },
     { 
         label: "Python", 
         svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
         isGoodAt: true,
         category: "Programming Languages" 
     },
-
+    { 
+        label: "TypeScript", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+        isGoodAt: true,
+        category: "Programming Languages" 
+    },
     { 
         label: "JavaScript", 
         svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
         isGoodAt: true,
         category: "Programming Languages"
     },
+
+    // --- Backend Development ---
     { 
-        label: "C", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
-        isGoodAt: false,
-        category: "Programming Languages" 
-    },
-    { 
-        label: "C++", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
-        isGoodAt: false,
-        category: "Programming Languages" 
-    },
-    { 
-        label: "Java", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-        isGoodAt: false,
-        category: "Programming Languages" 
-    },
-    { 
-        label: "TypeScript", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-        isGoodAt: false,
-        category: "Programming Languages" 
-    },
-    { 
-        label: "React", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+        label: "NestJS", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
         isGoodAt: true,
-        category: "Frontend/Web Development"
-    },
-    { 
-        label: "HTML5", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-        isGoodAt: false,
-        category: "Frontend/Web Development"
-    },
-    { 
-        label: "CSS3", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-        isGoodAt: false,
-        category: "Frontend/Web Development"
-    },
-    { 
-        label: "Django", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg",
-        isGoodAt: false,
         category: "Backend Development"
-    },
-    { 
-        label: "Tailwindcss", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
-        isGoodAt: true,
-        category: "Frontend/Web Development"
     },
     { 
         label: "Node.js", 
@@ -82,10 +49,38 @@ const skills = [
         category: "Backend Development"
     },
     { 
-        label: "Express.js", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
-        isGoodAt: true,
+        label: "GraphQL", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg",
+        isGoodAt: false,
         category: "Backend Development"
+    },
+    { 
+        label: "Socket.IO", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/socketio/socketio-original.svg",
+        isGoodAt: false,
+        category: "Backend Development"
+    },
+
+    // --- Frontend Development ---
+    { 
+        label: "React", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+        isGoodAt: true,
+        category: "Frontend/Web Development"
+    },
+    { 
+        label: "Tailwind CSS", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+        isGoodAt: true,
+        category: "Frontend/Web Development"
+    },
+
+    // --- Database ---
+    { 
+        label: "PostgreSQL", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+        isGoodAt: true,
+        category: "Database"
     },
     { 
         label: "MySQL", 
@@ -100,46 +95,24 @@ const skills = [
         category: "Database"
     },
     { 
-        label: "PostgreSQL", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
-        isGoodAt: false,
+        label: "SQLite", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg",
+        isGoodAt: true,
         category: "Database"
     },
+
+    // --- Infrastructure & Tools ---
     { 
-        label: "Pytest", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytest/pytest-original.svg",
+        label: "AWS", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
         isGoodAt: true,
-        category: "Software Testing"
+        category: "Cloud & DevOps"
     },
     { 
         label: "Docker", 
         svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
         isGoodAt: false,
-        category: "DevOps and Infra-Architecture"
-    },
-    { 
-        label: "Jenkins", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg",
-        isGoodAt: false,
-        category: "DevOps and Infra-Architecture"
-    },
-    { 
-        label: "Github Actions", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg",
-        isGoodAt: false,
-        category: "DevOps and Infra-Architecture"
-    },
-    { 
-        label: "Git", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
-        isGoodAt: true,
-        category: "Software Development"
-    },
-    { 
-        label: "Github", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
-        isGoodAt: false,
-        category: "Software Development"
+        category: "Cloud & DevOps"
     },
     { 
         label: "Linux", 
@@ -148,80 +121,61 @@ const skills = [
         category: "Software Development"
     },
     { 
+        label: "Git", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+        isGoodAt: true,
+        category: "Software Development"
+    },
+    { 
         label: "Bash", 
         svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg",
         isGoodAt: true,
-        category: "Software Development"
+        category: "Software Development" 
     },
-    { 
-        label: "Powershell", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-original.svg",
-        isGoodAt: true,
-        category: "Software Development"
-    },
-    { 
-        label: "Pytorch", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
-        isGoodAt: false,
-        category: "Machine Learning"
-    },
-    { 
-        label: "Tensorflow", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg",
-        isGoodAt: false,
-        category: "Machine Learning"
-    },
-    { 
-        label: "R", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg",
-        isGoodAt: false,
-        category: "Data analysis"
-    },
-    { 
-        label: "Pandas", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg",
-        isGoodAt: false,
-        category: "Data analysis"
-    },
-];
-
-const categories = [
-    "Programming Languages",
-    "Frontend/Web Development",
-    "Backend Development",
-    "Database",
-    "Software Testing",
-    "DevOps and Infra-Architecture",
-    "Software Development",
-    "Machine Learning",
-    "Data analysis"
 ];
 
 const SkillsSection = () => {
+    // Dynamically group items by category
+    const groupedSkills = skills.reduce((acc, skill) => {
+        if (!acc[skill.category]) acc[skill.category] = [];
+        acc[skill.category].push(skill);
+        return acc;
+    }, {});
+
     return (
-        <div className="p-4 overflow-hidden"> {/* Adjusted to prevent overflow */}
-            {categories.map((category) => (
-                <div key={category} className="mb-6">
-                    <h2 className="text-2xl font-bold mb-3 text-gray-200">
-                        {category}
-                    </h2>
-                    <div className="grid grid-cols-8 gap-2"> {/* Remove overflow-hidden here */}
-                        {skills
-                            .filter(skill => skill.category === category)
-                            .map((skill) => (
-                                <Skill
-                                    key={skill.label}
-                                    {...skill}
-                                    backgroundColor="#FFFFFF"
-                                />
-                            ))}
+        <section className="max-w-6xl mx-auto px-6 py-12">
+            <header className="mb-16">
+                <h1 className="text-4xl font-black text-white mb-4">Technical Lexicon</h1>
+                <p className="text-gray-400 max-w-2xl leading-relaxed">
+                    A comprehensive breakdown of my digital toolbelt, ranging from system-level programming to modern cloud architectures.
+                </p>
+            </header>
+
+            {Object.entries(groupedSkills).map(([category, items], categoryIdx) => (
+                <motion.div 
+                    key={category}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: categoryIdx * 0.1, duration: 0.5 }}
+                    className="mb-16"
+                >
+                    <div className="flex items-center gap-6 mb-10">
+                        <h2 className="text-sm uppercase tracking-[0.3em] font-black text-blue-500 whitespace-nowrap">
+                            {category}
+                        </h2>
+                        <div className="h-[1px] w-full bg-gradient-to-r from-blue-500/30 to-transparent" />
                     </div>
-                </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-6">
+                        {items.map((skill) => (
+                            <Skill key={skill.label} {...skill} />
+                        ))}
+                    </div>
+                </motion.div>
             ))}
-        </div>
+        </section>
     );
 };
-
-
 
 export default SkillsSection;
