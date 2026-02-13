@@ -5,6 +5,7 @@ function Header({ activeTab, handleTabClick }) {
     const navItems = [
         { label: "About", icon: <User size={18} />, id: "about" },
         { label: "Skills", icon: <Code size={18} />, id: "skills" },
+        { label: "Experience", icon: <Folder size={18} />, id: "experience" },
         { label: "Portfolio", icon: <Folder size={18} />, id: "portfolio" },
         { label: "Contact", icon: <Mail size={18} />, id: "contact" },
     ];

@@ -6,6 +6,7 @@
     import HomeContent from "./sections/HomeContent";
     import About from "./sections/About";
     import SkillsSection from "./sections/SkillsSection";
+    import Experience from "./sections/Experience";
     import Portfolio from "./sections/Portfolio";
     import Contact from "./sections/Contact";
     import './index.css';
@@ -18,17 +19,17 @@
 
         // 1. Cleaner Typing Logic
         useEffect(() => {
-            if (greetingText.length < fullGreeting.length) {
-                const timeout = setTimeout(() => {
-                    setGreetingText(fullGreeting.slice(0, greetingText.length + 1));
-                }, 100);
-                return () => clearTimeout(timeout);
-            } else {
-                // Wait 1s after typing finishes, then enter the site
-                const exitTimeout = setTimeout(() => setShowGreeting(false), 1000);
-                return () => clearTimeout(exitTimeout);
-            }
-        }, [greetingText]);
+    if (greetingText.length < fullGreeting.length) {
+        const timeout = setTimeout(() => {
+            // Functional update ensures you always have the latest state
+            setGreetingText(prev => fullGreeting.slice(0, prev.length + 1));
+        }, 100);
+        return () => clearTimeout(timeout);
+    } else {
+        const exitTimeout = setTimeout(() => setShowGreeting(false), 1000);
+        return () => clearTimeout(exitTimeout);
+    }
+}, [greetingText]); // greetingText is the correct dependency here
 
         useEffect(() => {
         window.scrollTo({ top: 0, behavior: "instant" });
@@ -38,6 +39,7 @@
         home: <HomeContent />,
         about: <About />,
         skills: <SkillsSection />,
+        experience: <Experience/>,
         portfolio: <Portfolio />,
         contact: <Contact />
     };

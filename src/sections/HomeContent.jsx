@@ -32,7 +32,7 @@ function HomeContent() {
             {/* Modern CTA or Badge */}
             <div className="mt-10 flex gap-4">
                 <div className="px-4 py-2 rounded-full bg-gray-800/50 border border-gray-700 text-sm text-gray-300 backdrop-blur-sm">
-                    🚀 Currently building with React & Node.js
+                     Currently building with React & Node.js
                 </div>
             </div>
         </div>
