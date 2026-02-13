@@ -181,6 +181,18 @@ const skills = [
         isGoodAt: true,
         category: "Software Development" 
     },
+    { 
+        label: "GitLab", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg",
+        isGoodAt: false,
+        category: "Software Development" 
+    },
+    { 
+        label: "GitHub", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+        isGoodAt: false,
+        category: "Software Development" 
+    },
 ];
 
 const SkillsSection = () => {
