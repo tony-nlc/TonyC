@@ -89,19 +89,39 @@ const skills = [
         category: "Database"
     },
     { 
-        label: "MongoDB", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
-        isGoodAt: true,
-        category: "Database"
-    },
-    { 
         label: "SQLite", 
         svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg",
         isGoodAt: true,
         category: "Database"
     },
+    { 
+        label: "MongoDB", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
+        isGoodAt: true,
+        category: "Database"
+    },
+    
+    // --- Testing ---
+    { 
+        label: "Postman", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg",
+        isGoodAt: true,
+        category: "Testing"
+    },
+    { 
+        label: "Apache", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original.svg",
+        isGoodAt: true,
+        category: "Testing"
+    },
+    { 
+        label: "Pytest", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytest/pytest-original.svg",
+        isGoodAt: false,
+        category: "Testing"
+    },
 
-    // --- Infrastructure & Tools ---
+    // --- Cloud & DevOps ---
     { 
         label: "AWS", 
         svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
@@ -109,17 +129,46 @@ const skills = [
         category: "Cloud & DevOps"
     },
     { 
-        label: "Docker", 
-        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+        label: "Azure", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
+        isGoodAt: true,
+        category: "Cloud & DevOps"
+    },
+    { 
+        label: "DigitalOcean", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/digitalocean/digitalocean-original.svg",
         isGoodAt: false,
         category: "Cloud & DevOps"
     },
+    { 
+        label: "Docker", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+        isGoodAt: true,
+        category: "Cloud & DevOps"
+    },
+    
+    { 
+        label: "Kubernetes", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg",
+        isGoodAt: false,
+        category: "Cloud & DevOps"
+    },
+    { 
+        label: "Jenkins", 
+        svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg",
+        isGoodAt: false,
+        category: "Cloud & DevOps"
+    },
+
+    // --- Software Development ---
+
     { 
         label: "Linux", 
         svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg",
         isGoodAt: true,
         category: "Software Development"
     },
+
     { 
         label: "Git", 
         svgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",

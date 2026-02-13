@@ -86,7 +86,7 @@ function About() {
                         </div>
                         <p className="text-xs text-gray-400 font-medium leading-relaxed">
                             CIT Diploma @ BCIT <br/>
-                            <span className="text-gray-500 text-[10px] uppercase tracking-wider">Graduating April 2025</span>
+                            <span className="text-gray-500 text-[10px] uppercase tracking-wider">Graduating April 2026</span>
                         </p>
                     </motion.div>
 
@@ -96,7 +96,7 @@ function About() {
                             <h3 className="text-white font-bold text-sm">Current Focus</h3>
                         </div>
                         <ul className="text-[11px] text-gray-400 space-y-2">
-                            <li className="flex items-center gap-2">• Golang Automation & Bash</li>
+                            <li className="flex items-center gap-2">• Backend Development</li>
                             <li className="flex items-center gap-2">• System Architecture</li>
                             <li className="flex items-center gap-2">• AWS & Azure Cloud</li>
                         </ul>
